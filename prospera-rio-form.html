@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prospera Rio - Plano de Negócios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #EFF1F3;
+            color: #021738;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(9, 32, 64, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 150px;
+        }
+
+        .location-text {
+            color: #ECC203;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 20pt;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 32pt;
+            color: #092040;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 18pt;
+            color: #00B7D7;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #EFF1F3;
+            border-radius: 8px;
+            border-left: 5px solid #00B7D7;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24pt;
+            color: #092040;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #00B7D7;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            font-size: 14pt;
+            color: #021738;
+            margin-bottom: 8px;
+        }
+
+        .required {
+            color: #ECC203;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #00B7D7;
+            border-radius: 6px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12pt;
+            background: #FFFFFF;
+            color: #021738;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="time"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #092040;
+            box-shadow: 0 0 0 3px rgba(0, 183, 215, 0.2);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-option,
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #00B7D7;
+        }
+
+        .conditional-field {
+            display: none;
+            margin-top: 15px;
+            padding-left: 30px;
+            border-left: 3px solid #ECC203;
+        }
+
+        .conditional-field.show {
+            display: block;
+        }
+
+        .submit-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn-submit {
+            background: #ECC203;
+            color: #021738;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18pt;
+            padding: 18px 60px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(236, 194, 3, 0.3);
+        }
+
+        .btn-submit:hover {
+            background: #d4aa02;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(236, 194, 3, 0.4);
+        }
+
+        .btn-submit:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .loading-spinner {
+            border: 4px solid #EFF1F3;
+            border-top: 4px solid #00B7D7;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .message {
+            display: none;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            font-size: 14pt;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24pt;
+            }
+
+            .subtitle {
+                font-size: 14pt;
+            }
+
+            .section-title {
+                font-size: 20pt;
+            }
+
+            .btn-submit {
+                font-size: 16pt;
+                padding: 15px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo e Header -->
+        <div class="logo-container">
+            <img class="logo" src="https://lh3.googleusercontent.com/d/1x5sNkC9vd7CI78y0xdkWvgoadxPEMcIf=w800" alt="Prospera Rio — Logomarca">
+            <div class="location-text">MARÉ · JACAREZINHO</div>
+        </div>
+
+        <h1>Plano de Negócios</h1>
+        <p class="subtitle">Método Descomplica Negócios</p>
+
+        <form id="formProspera">
+            <!-- SEÇÃO 1: Identificação da Consultoria -->
+            <div class="section">
+                <h2 class="section-title">SEÇÃO 1 — Identificação da Consultoria</h2>
+
+                <div class="form-group">
+                    <label for="nomeConsultor">Nome do Consultor(a) <span class="required">*</span></label>
+                    <input type="text" id="nomeConsultor" name="nomeConsultor" value="Luciene Muniz" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dataAtendimento">Data do Atendimento <span class="required">*</span></label>
+                    <input type="date" id="dataAtendimento" name="dataAtendimento" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="horarioInicio">Horário de Início <span class="required">*</span></label>
+                    <input type="time" id="horarioInicio" name="horarioInicio" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Local do Atendimento <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="localJacarezinho" name="localAtendimento" value="Jacarezinho" required>
+                            <label for="localJacarezinho">Jacarezinho</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="localManguinhos" name="localAtendimento" value="Manguinhos">
+                            <label for="localManguinhos">Manguinhos</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="localMare" name="localAtendimento" value="Maré">
+                            <label for="localMare">Maré</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="localOutro" name="localAtendimento" value="Outro">
+                            <label for="localOutro">Outro</label>
+                        </div>
+                    </div>
+                    <div id="outroLocalContainer" class="conditional-field">
+                        <label for="outroLocal">Outro local (especifique)</label>
+                        <input type="text" id="outroLocal" name="outroLocal">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 2: Identificação do Empreendedor -->
+            <div class="section">
+                <h2 class="section-title">SEÇÃO 2 — Identificação do Empreendedor</h2>
+
+                <div class="form-group">
+                    <label for="nomeEmpreendedor">Nome completo do empreendedor(a) <span class="required">*</span></label>
+                    <input type="text" id="nomeEmpreendedor" name="nomeEmpreendedor" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nomeNegocio">Nome do negócio <span class="required">*</span></label>
+                    <input type="text" id="nomeNegocio" name="nomeNegocio" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cpfCnpj">CPF ou CNPJ <span class="required">*</span></label>
+                    <input type="text" id="cpfCnpj" name="cpfCnpj" placeholder="Digite apenas números (sem ponto ou traço)" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="enderecoNegocio">Endereço do negócio <span class="required">*</span></label>
+                    <textarea id="enderecoNegocio" name="enderecoNegocio" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Telefone / WhatsApp <span class="required">*</span></label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Onde funciona hoje?</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="funcionaCasa" name="ondeFunciona" value="Casa">
+                            <label for="funcionaCasa">Casa</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="funcionaLoja" name="ondeFunciona" value="Loja">
+                            <label for="funcionaLoja">Loja</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="funcionaRua" name="ondeFunciona" value="Rua">
+                            <label for="funcionaRua">Rua</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="funcionaInternet" name="ondeFunciona" value="Internet">
+                            <label for="funcionaInternet">Internet</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="funcionaOutro" name="ondeFunciona" value="Outro">
+                            <label for="funcionaOutro">Outro</label>
+                        </div>
+                    </div>
+                    <div id="ondeFuncionaDescContainer" class="conditional-field">
+                        <label for="ondeFuncionaDesc">Descreva brevemente o espaço ou local onde funciona</label>
+                        <textarea id="ondeFuncionaDesc" name="ondeFuncionaDesc"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Você tem CNPJ?</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="cnpjSim" name="temCnpj" value="Sim">
+                            <label for="cnpjSim">Sim</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="cnpjNao" name="temCnpj" value="Não">
+                            <label for="cnpjNao">Não</label>
+                        </div>
+                    </div>
+                    <div id="cnpjInfoContainer" class="conditional-field">
+                        <label for="cnpjInfo">Qual o número e há quanto tempo está ativo?</label>
+                        <input type="text" id="cnpjInfo" name="cnpjInfo">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 3: Produtos e Serviços -->
+            <div class="section">
+                <h2 class="section-title">SEÇÃO 3 — Produtos e Serviços</h2>
+
+                <div class="form-group">
+                    <label for="oQueVende">O que você vende? <span class="required">*</span></label>
+                    <textarea id="oQueVende" name="oQueVende" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="produtoMaisVende">Produto ou serviço que mais vende hoje</label>
+                    <input type="text" id="produtoMaisVende" name="produtoMaisVende">
+                </div>
+
+                <div class="form-group">
+                    <label for="porqueMaisProcurado">Por que acha que este é o mais procurado?</label>
+                    <textarea id="porqueMaisProcurado" name="porqueMaisProcurado"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="elogiosClientes">O que os clientes mais elogiam no seu negócio?</label>
+                    <textarea id="elogiosClientes" name="elogiosClientes"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="concordaElogios">Você concorda com esses elogios? Por quê?</label>
+                    <textarea id="concordaElogios" name="concordaElogios"></textarea>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 4: Clientes e Mercado -->
+            <div class="section">
+                <h2 class="section-title">SEÇÃO 4 — Clientes e Mercado</h2>
+
+                <div class="form-group">
+                    <label>Quem mais compra de você?</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="compraVizinhos" name="quemCompra" value="Vizinhos">
+                            <label for="compraVizinhos">Vizinhos</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="compraAmigos" name="quemCompra" value="Amigos">
+                            <label for="compraAmigos">Amigos</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="compraInternet" name="quemCompra" value="Internet">
+                            <label for="compraInternet">Internet</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="compraEmpresas" name="quemCompra" value="Empresas">
+                            <label for="compraEmpresas">Empresas</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="compraOutro" name="quemCompra" value="Outro">
+                            <label for="compraOutro">Outro</label>
+                        </div>
+                    </div>
+                    <div id="quemCompraDescContainer" class="conditional-field">
+                        <label for="quemCompraDesc">Explique quem é seu público principal e o que ele busca</label>
+                        <textarea id="quemCompraDesc" name="quemCompraDesc"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Como os clientes descobrem seu negócio?</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="descobremBoca" name="comoDescobrem" value="Boca a boca">
+                            <label for="descobremBoca">Boca a boca</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="descobremRedes" name="comoDescobrem" value="Redes sociais">
+                            <label for="descobremRedes">Redes sociais</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="descobremPlaca" name="comoDescobrem" value="Placa">
+                            <label for="descobremPlaca">Placa</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="descobremPanfleto" name="comoDescobrem" value="Panfleto">
+                            <label for="descobremPanfleto">Panfleto</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="descobremOutro" name="comoDescobrem" value="Outro">
+                            <label for="descobremOutro">Outro</label>
+                        </div>
+                    </div>
+                    <div id="comoDescobremDescContainer" class="conditional-field">
+                        <label for="comoDescobremDesc">Qual dessas formas traz mais resultado hoje?</label>
+                        <textarea id="comoDescobremDesc" name="comoDescobremDesc"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="maisCientesComprar">O que faria mais clientes comprarem de você?</label>
+                    <textarea id="maisCientesComprar" name="maisCientesComprar"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="oQueTentou">O que você já tentou e funcionou ou não funcionou?</label>
+                    <textarea id="oQueTentou" name="oQueTentou"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="quemVendeParecido">Quem vende parecido com você na região?</label>
+                    <textarea id="quemVendeParecido" name="quemVendeParecido"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="concorrentesDiretas">Você considera essas pessoas concorrentes diretas? Por quê?</label>
+                    <textarea id="concorrentesDiretas" name="concorrentesDiretas"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="diferencaConcorrentes">O que você faz de diferente dos concorrentes?</label>
+                    <textarea id="diferencaConcorrentes" name="diferencaConcorrentes"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="fortalecerDiferenca">Como poderia fortalecer ainda mais essa diferença?</label>
+                    <textarea id="fortalecerDiferenca" name="fortalecerDiferenca"></textarea>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 5: Estrutura e Operação -->
+            <div class="section">
+                <h2 class="section-title">SEÇÃO 5 — Estrutura e Operação</h2>
+
+                <div class="form-group">
+                    <label for="trabalhaSozinho">Você trabalha sozinho ou com ajuda? Quem ajuda?</label>
+                    <textarea id="trabalhaSozinho" name="trabalhaSozinho"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="divisaoTarefas">Como é a divisão de tarefas entre vocês?</label>
+                    <textarea id="divisaoTarefas" name="divisaoTarefas"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="senteFalta">O que sente falta para organizar melhor seu negócio?</label>
+                    <textarea id="senteFalta" name="senteFalta"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="tentouResolver">O que já tentou fazer para resolver isso?</label>
+                    <textarea id="tentouResolver" name="tentouResolver"></textarea>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 6: Gestão Financeira -->
+            <div class="section">
+                <h2 class="section-title">SEÇÃO 6 — Gestão Financeira</h2>
+
+                <div class="form-group">
+                    <label for="anotaVendasDespesas">Você anota vendas e despesas? Como faz isso?</label>
+                    <textarea id="anotaVendasDespesas" name="anotaVendasDespesas"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="frequenciaRevisao">Com que frequência revisa esses registros?</label>
+                    <input type="text" id="frequenciaRevisao" name="frequenciaRevisao">
+                </div>
+
+                <div class="form-group">
+                    <label for="mediaVendasMes">Média de vendas por mês (aproximado)</label>
+                    <input type="text" id="mediaVendasMes" name="mediaVendasMes">
+                </div>
+
+                <div class="form-group">
+                    <label for="valorFixoVariavel">Esse valor é fixo ou varia muito?</label>
+                    <input type="text" id="valorFixoVariavel" name="valorFixoVariavel">
+                </div>
+
+                <div class="form-group">
+                    <label>Quanto sobra de lucro em cada produto ou serviço?</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="lucroSei" name="lucroSobra" value="Sei">
+                            <label for="lucroSei">Sei</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="lucroNaoSei" name="lucroSobra" value="Não sei">
+                            <label for="lucroNaoSei">Não sei</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="lucroDepende" name="lucroSobra" value="Depende do mês">
+                            <label for="lucroDepende">Depende do mês</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="lucroOutro" name="lucroSobra" value="Outro">
+                            <label for="lucroOutro">Outro</label>
+                        </div>
+                    </div>
+                    <div id="lucroDescContainer" class="conditional-field">
+                        <label for="lucroDesc">Explique como calcula ou por que ainda não acompanha</label>
+                        <textarea id="lucroDesc" name="lucroDesc"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 7: Planejamento e Desenvolvimento -->
+            <div class="section">
+                <h2 class="section-title">SEÇÃO 7 — Planejamento e Desenvolvimento</h2>
+
+                <div class="form-group">
+                    <label for="negocioEm1Ano">Onde você gostaria que seu negócio estivesse em 1 ano?</label>
+                    <textarea id="negocioEm1Ano" name="negocioEm1Ano"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="primeiroPassoFuturo">O que considera o primeiro passo para chegar lá?</label>
+                    <textarea id="primeiroPassoFuturo" name="primeiroPassoFuturo"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="precisaAprender">O que precisa aprender ou melhorar para chegar lá?</label>
+                    <textarea id="precisaAprender" name="precisaAprender"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="buscaCapacitacao">Tem buscado ajuda ou capacitação para isso?</label>
+                    <textarea id="buscaCapacitacao" name="buscaCapacitacao"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="pedirAjuda">Se pudesse pedir uma ajuda hoje, qual seria?</label>
+                    <textarea id="pedirAjuda" name="pedirAjuda"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="quemPoderiaAjudar">Quem poderia te ajudar nisso (instituição, pessoa ou parceiro)?</label>
+                    <textarea id="quemPoderiaAjudar" name="quemPoderiaAjudar"></textarea>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 8: Fechamento do Atendimento -->
+            <div class="section">
+                <h2 class="section-title">SEÇÃO 8 — Fechamento do Atendimento</h2>
+
+                <div class="form-group">
+                    <label for="observacoesConsultor">Observações do consultor</label>
+                    <textarea id="observacoesConsultor" name="observacoesConsultor"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="horarioTermino">Horário de término do atendimento <span class="required">*</span></label>
+                    <input type="time" id="horarioTermino" name="horarioTermino" required>
+                </div>
+            </div>
+
+            <!-- Mensagens -->
+            <div id="successMessage" class="message success">
+                ✓ Formulário enviado com sucesso!
+            </div>
+            <div id="errorMessage" class="message error">
+                ✗ Erro ao enviar formulário. Por favor, tente novamente.
+            </div>
+
+            <!-- Loading -->
+            <div id="loading" class="loading">
+                <div class="loading-spinner"></div>
+                <p>Enviando dados...</p>
+            </div>
+
+            <!-- Botão de Envio -->
+            <div class="submit-container">
+                <button type="submit" class="btn-submit" id="btnSubmit">Enviar Formulário</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // ====================================
+        // CONFIGURAÇÃO - COLE SUA URL AQUI
+        // ====================================
+        const SCRIPT_URL = 'COLE_SUA_URL_DO_APPS_SCRIPT_AQUI';
+        
+        // Campos condicionais
+        const conditionalFields = {
+            localAtendimento: {
+                trigger: 'localOutro',
+                target: 'outroLocalContainer'
+            },
+            ondeFunciona: {
+                triggers: ['funcionaCasa', 'funcionaLoja', 'funcionaRua', 'funcionaInternet', 'funcionaOutro'],
+                target: 'ondeFuncionaDescContainer'
+            },
+            temCnpj: {
+                trigger: 'cnpjSim',
+                target: 'cnpjInfoContainer'
+            },
+            quemCompra: {
+                triggers: ['compraVizinhos', 'compraAmigos', 'compraInternet', 'compraEmpresas', 'compraOutro'],
+                target: 'quemCompraDescContainer'
+            },
+            comoDescobrem: {
+                triggers: ['descobremBoca', 'descobremRedes', 'descobremPlaca', 'descobremPanfleto', 'descobremOutro'],
+                target: 'comoDescobremDescContainer'
+            },
+            lucroSobra: {
+                triggers: ['lucroSei', 'lucroNaoSei', 'lucroDepende', 'lucroOutro'],
+                target: 'lucroDescContainer'
+            }
+        };
+
+        // Inicializa campos condicionais
+        function initConditionalFields() {
+            // Local Atendimento
+            document.querySelectorAll('input[name="localAtendimento"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const container = document.getElementById('outroLocalContainer');
+                    if (this.id === 'localOutro') {
+                        container.classList.add('show');
+                    } else {
+                        container.classList.remove('show');
+                    }
+                });
+            });
+
+            // Onde Funciona
+            document.querySelectorAll('input[name="ondeFunciona"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const container = document.getElementById('ondeFuncionaDescContainer');
+                    container.classList.add('show');
+                });
+            });
+
+            // Tem CNPJ
+            document.querySelectorAll('input[name="temCnpj"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const container = document.getElementById('cnpjInfoContainer');
+                    if (this.id === 'cnpjSim') {
+                        container.classList.add('show');
+                    } else {
+                        container.classList.remove('show');
+                    }
+                });
+            });
+
+            // Quem Compra
+            document.querySelectorAll('input[name="quemCompra"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const container = document.getElementById('quemCompraDescContainer');
+                    container.classList.add('show');
+                });
+            });
+
+            // Como Descobrem
+            document.querySelectorAll('input[name="comoDescobrem"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const container = document.getElementById('comoDescobremDescContainer');
+                    container.classList.add('show');
+                });
+            });
+
+            // Lucro Sobra
+            document.querySelectorAll('input[name="lucroSobra"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const container = document.getElementById('lucroDescContainer');
+                    container.classList.add('show');
+                });
+            });
+        }
+
+        // Coleta dados do formulário
+        function getFormData() {
+            const form = document.getElementById('formProspera');
+            const formData = new FormData(form);
+            const data = {};
+
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+
+            return data;
+        }
+
+        // Envia dados para o Google Sheets
+        async function submitForm(e) {
+            e.preventDefault();
+
+            // Validação básica
+            if (!SCRIPT_URL || SCRIPT_URL === 'COLE_SUA_URL_DO_APPS_SCRIPT_AQUI') {
+                showError('Configure a URL do Apps Script antes de usar o formulário!');
+                return;
+            }
+
+            const btnSubmit = document.getElementById('btnSubmit');
+            const loading = document.getElementById('loading');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Oculta mensagens anteriores
+            successMessage.classList.remove('show');
+            errorMessage.classList.remove('show');
+
+            // Desabilita botão e mostra loading
+            btnSubmit.disabled = true;
+            loading.classList.add('show');
+
+            try {
+                // Coleta dados
+                const data = getFormData();
+
+                // Envia para o Apps Script
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                // Como usamos no-cors, não podemos ler a resposta
+                // Assumimos sucesso se não houver erro
+                loading.classList.remove('show');
+                successMessage.classList.add('show');
+                
+                // Reseta o formulário após 2 segundos
+                setTimeout(() => {
+                    document.getElementById('formProspera').reset();
+                    successMessage.classList.remove('show');
+                    btnSubmit.disabled = false;
+                    
+                    // Scroll para o topo
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 2000);
+
+            } catch (error) {
+                console.error('Erro:', error);
+                loading.classList.remove('show');
+                errorMessage.classList.add('show');
+                errorMessage.textContent = '✗ Erro ao enviar formulário: ' + error.message;
+                btnSubmit.disabled = false;
+
+                // Oculta mensagem de erro após 5 segundos
+                setTimeout(() => {
+                    errorMessage.classList.remove('show');
+                }, 5000);
+            }
+        }
+
+        // Mostra erro
+        function showError(message) {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = '✗ ' + message;
+            errorMessage.classList.add('show');
+            
+            setTimeout(() => {
+                errorMessage.classList.remove('show');
+            }, 5000);
+        }
+
+        // Inicializa quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializa campos condicionais
+            initConditionalFields();
+
+            // Define data atual
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('dataAtendimento').value = today;
+
+            // Define hora atual
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('horarioInicio').value = `${hours}:${minutes}`;
+
+            // Adiciona evento de submit
+            document.getElementById('formProspera').addEventListener('submit', submitForm);
+
+            // Máscara para CPF/CNPJ (apenas números)
+            document.getElementById('cpfCnpj').addEventListener('input', function(e) {
+                e.target.value = e.target.value.replace(/\D/g, '');
+            });
+
+            // Máscara para telefone (apenas números)
+            document.getElementById('telefone').addEventListener('input', function(e) {
+                e.target.value = e.target.value.replace(/\D/g, '');
+            });
+        });
+    </script>
+</body>
+</html>
