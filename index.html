@@ -819,6 +819,9 @@
             // Coleta dados
             const formData = getFormData();
             
+            console.log('Enviando dados para:', SCRIPT_URL);
+            console.log('Dados:', formData);
+            
             // Cria um iframe oculto para enviar os dados
             const iframe = document.createElement('iframe');
             iframe.name = 'hidden_iframe';
@@ -840,6 +843,8 @@
 
             document.body.appendChild(tempForm);
             
+            console.log('Formulário criado, enviando...');
+            
             // Envia o formulário
             tempForm.submit();
 
@@ -847,6 +852,8 @@
             setTimeout(() => {
                 loading.classList.remove('show');
                 successMessage.classList.add('show');
+                
+                console.log('Dados enviados com sucesso!');
                 
                 // Remove elementos temporários
                 document.body.removeChild(tempForm);
