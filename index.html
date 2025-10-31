@@ -27,9 +27,62 @@
             max-width: 900px;
             margin: 0 auto;
             background: #FFFFFF;
-            padding: 40px;
+            padding: 0;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(9, 32, 64, 0.1);
+            overflow: hidden;
+        }
+
+        .header-top {
+            background: linear-gradient(135deg, #092040 0%, #021738 100%);
+            color: #FFFFFF;
+            padding: 30px 40px;
+            box-shadow: 0 4px 12px rgba(9, 32, 64, 0.3);
+            text-align: center;
+        }
+
+        .header-top h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 28pt;
+            color: #FFFFFF;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .header-top .subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16pt;
+            color: #ECC203;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-dashboard {
+            display: inline-block;
+            background: #00B7D7;
+            color: #FFFFFF;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 12pt;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 183, 215, 0.3);
+        }
+
+        .btn-dashboard:hover {
+            background: #0096b8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 183, 215, 0.5);
+        }
+
+        .form-content {
+            padding: 40px;
         }
 
         .logo-container {
@@ -66,15 +119,6 @@
             color: #092040;
             text-align: center;
             margin-bottom: 10px;
-        }
-
-        .subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 18pt;
-            color: #00B7D7;
-            text-align: center;
-            margin-bottom: 40px;
         }
 
         .section {
@@ -209,6 +253,28 @@
             transform: none;
         }
 
+        .btn-dashboard {
+            display: inline-block;
+            background: #00B7D7;
+            color: #FFFFFF;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 14pt;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 183, 215, 0.3);
+        }
+
+        .btn-dashboard:hover {
+            background: #0096b8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 183, 215, 0.4);
+        }
+
         .loading {
             display: none;
             text-align: center;
@@ -262,16 +328,20 @@
         }
 
         @media (max-width: 768px) {
-            .container {
+            .form-content {
                 padding: 20px;
             }
 
-            h1 {
-                font-size: 24pt;
+            .header-top {
+                padding: 20px;
             }
 
-            .subtitle {
-                font-size: 14pt;
+            .header-top h1 {
+                font-size: 20pt;
+            }
+
+            .header-top .subtitle {
+                font-size: 12pt;
             }
 
             .section-title {
@@ -293,9 +363,17 @@
             <div class="location-text">MARÉ · JACAREZINHO</div>
         </div>
 
-        <h1>Plano de Negócios</h1>
-        <p class="subtitle">Método Descomplica Negócios</p>
+        <!-- Header Azul -->
+        <div class="header-top">
+            <h1>Plano de Negócios</h1>
+            <p class="subtitle">Método Descomplica Negócios</p>
+            <a href="https://lucienemunizestrategia-sudo.github.io/dashboardplanodenegocio/" target="_blank" class="btn-dashboard">
+                Ver Dashboard de Análises
+            </a>
+        </div>
 
+        <!-- Conteúdo do Formulário -->
+        <div class="form-content">
         <form id="formProspera">
             <!-- SEÇÃO 1: Identificação da Consultoria -->
             <div class="section">
@@ -691,6 +769,7 @@
                 <button type="submit" class="btn-submit" id="btnSubmit">Enviar Formulário</button>
             </div>
         </form>
+        </div>
     </div>
 
     <script>
